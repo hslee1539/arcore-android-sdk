@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() ,GLSurfaceView.Renderer{
     private var viewportWidth : Int = 0
     private var viewportHeight : Int = 0
     private var viewportChange : Boolean = false
+    var applicationPTR = ApplicationInterface.createApplication()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

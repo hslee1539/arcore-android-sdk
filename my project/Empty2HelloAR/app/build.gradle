@@ -2,6 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+/*
+The arcore aar library contains the native shared libraries.  These are
+extracted before building to a temporary directory.
+ */
+def arcore_libpath = "${buildDir}/arcore-native"
+
+// Create a configuration to mark which aars to extract .so files from
+configurations { natives }
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
@@ -14,6 +23,16 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11", "-Wall"
+                arguments "-DANDROID_STL=c++_static",
+                        "-DARCORE_LIBPATH=${arcore_libpath}/jni",
+                        "-DARCORE_INCLUDE=${projectDir}/../../libraries/include", // project.rootDir 은 중간 디렉토리에 "my project"가 있어서 띄어 쓰기 때문에 빌드 안됨.
+                        "-DGLM_INCLUDE=${projectDir}/../../libraries/glm"
+            }
+        }
     }
 
     buildTypes {
@@ -42,7 +61,7 @@ dependencies {
     // ARCore (Google Play Services for AR) library.
     implementation 'com.google.ar:core:1.18.0'
     // NDK 사용시 위 implementation도 필요하고 natives도 필요함.
-    //natives 'com.google.ar:core:1.18.0'
+    natives 'com.google.ar:core:1.18.0'
 
     // ARCore에 포함되는 것 같음.
     //implementation 'de.javagl:obj:0.2.1'

@@ -34,4 +34,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    // ARCore (Google Play Services for AR) library.
+    implementation 'com.google.ar:core:1.18.0'
+    // NDK 사용시 위 implementation도 필요하고 natives도 필요함.
+    //natives 'com.google.ar:core:1.18.0'
+
+    // ARCore에 포함되는 것 같음.
+    //implementation 'de.javagl:obj:0.2.1'
+
 }

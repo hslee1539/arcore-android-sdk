@@ -1,5 +1,6 @@
 package com.example.empty2helloar
 
+import android.content.res.AssetManager
 import android.opengl.GLES20
 import android.opengl.GLSurfaceView
 import android.os.Bundle
@@ -12,13 +13,13 @@ class MainActivity : AppCompatActivity() ,GLSurfaceView.Renderer{
     private var viewportWidth : Int = 0
     private var viewportHeight : Int = 0
     private var viewportChange : Boolean = false
-    var applicationPTR = ApplicationInterface.createApplication()
+    private var application: Long = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        application = ApplicationInterface.createApplication(assets)
 
         // Set up renderer.
         surfaceview.apply{

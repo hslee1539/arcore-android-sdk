@@ -11,6 +11,6 @@ set_target_properties(arcore PROPERTIES IMPORTED_LOCATION
 add_library( glm INTERFACE )
 set_target_properties( glm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${GLM_INCLUDE})
 
-add_library(Application SHARED src/main/cpp/Application.cpp)
+add_library(native_lib SHARED src/main/cpp/Application.cpp)
 
-target_link_libraries(Application android GLESv2 glm arcore)
+target_link_libraries(native_lib android GLESv2 glm arcore)

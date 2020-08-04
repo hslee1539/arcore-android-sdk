@@ -10,7 +10,7 @@ inline Emtpy2HelloAR::Application *toAppPointer(jlong ptr){
 
 
 Emtpy2HelloAR::Application::Application(AAssetManager *assetManager) : assetManager(assetManager) {
-
+    int a = 0;
 }
 
 Emtpy2HelloAR::Application::~Application() {

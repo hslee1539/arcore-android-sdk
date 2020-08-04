@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() ,GLSurfaceView.Renderer{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        application = ApplicationInterface.createApplication(assets)
 
         // Set up renderer.
         surfaceview.apply{
@@ -30,7 +29,13 @@ class MainActivity : AppCompatActivity() ,GLSurfaceView.Renderer{
             renderMode = GLSurfaceView.RENDERMODE_CONTINUOUSLY
             setWillNotDraw(false)
         }
+        application = ApplicationInterface.createApplication(assets)
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        ApplicationInterface.deleteApplication(this.application)
     }
 
     override fun onResume() {

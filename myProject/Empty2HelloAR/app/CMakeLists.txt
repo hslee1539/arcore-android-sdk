@@ -13,4 +13,4 @@ set_target_properties( glm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${GLM_INCLUD
 
 add_library(native_lib SHARED src/main/cpp/Application.cpp)
 
-target_link_libraries(native_lib android GLESv2 glm arcore)
+target_link_libraries(native_lib log android GLESv2 glm arcore)

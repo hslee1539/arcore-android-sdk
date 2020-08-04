@@ -40,15 +40,20 @@ class MainActivity : AppCompatActivity() ,GLSurfaceView.Renderer{
 
     override fun onResume() {
         super.onResume()
-        surfaceview.onResume()
+
         if(!PermissionHelper.hasCameraPermission(this))
             PermissionHelper.requestCameraPermission(this)
 
+        ApplicationInterface.OnResume(this.application, this.applicationContext, this)
+        surfaceview.onResume()
+
+        // 원본에서는 회전 관련된 코드가 있음.
     }
 
     override fun onPause() {
         super.onPause()
         surfaceview.onPause()
+        ApplicationInterface.OnPause(this.application);
     }
 
     override fun onRequestPermissionsResult(

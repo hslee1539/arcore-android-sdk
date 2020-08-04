@@ -11,3 +11,8 @@
 4. so 가 있는 디렉토리 선택 (so는 app/build/intermediates/cmake/debug/obj/ 에서 테스트 기기에 맞는 so 선택 x86, arm64 디렉토리 선택)
 
 > 이 과정을 하지 않으면 c++ 디버깅이 안됨. (코틀린 코드만 됨)
+
+## ArFrame 만드는 법
+
+1. ArCoreApk 부터 
+

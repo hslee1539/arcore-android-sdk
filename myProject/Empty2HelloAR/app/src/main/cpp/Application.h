@@ -9,23 +9,26 @@
 #include <android/asset_manager_jni.h>
 #include <jni.h>
 #include "arcore_c_api.h"
+#include "Log.h"
 
-namespace Emtpy2HelloAR{
+namespace Empty2HelloAR{
     class Application{
     private:
-        ArSession* session;
-        ArFrame* frame;
+        ArSession* session = nullptr;
+        ArFrame* frame = nullptr;
         AAssetManager* const assetManager;
+
+        bool isInstallCoreApk = false;
 
     public:
         explicit Application(AAssetManager *assetManager);
         ~Application();
 
-        //// OnPause is called on the UI thread from the Activity's onPause method.
-        //void OnPause();
-//
-        //// OnResume is called on the UI thread from the Activity's onResume method.
-        //void OnResume(void* env, void* context, void* activity);
+        // OnPause is called on the UI thread from the Activity's onPause method.
+        void OnPause();
+
+        // OnResume is called on the UI thread from the Activity's onResume method.
+        void OnResume(void* env, void* context, void* activity);
 //
         //// OnSurfaceCreated is called on the OpenGL thread when GLSurfaceView
         //// is created.
